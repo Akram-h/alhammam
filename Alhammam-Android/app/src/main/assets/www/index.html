@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1b3a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="الهمام">
+<title>الهمام — الهويات والمستمسكات</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+ <div class="logo"><i data-i="card"></i></div>
+ <div class="ttl"><h1>الهمام</h1><span>منظومة الهويات والمستمسكات</span></div>
+ <nav><button id="backup" type="button">نسخ احتياطي</button><button id="restore" type="button">استعادة</button><input id="restoreFile" type="file" accept="application/json,.json" hidden><button id="t1" class="on"><i data-i="card"></i>المستمسكات</button><button id="t2"><i data-i="user"></i>الصور الشخصية</button></nav>
+</header>
+<main>
+<section id="ctl">
+ <div id="idc">
+  <div class="box"><h3>التباعد بين الهويات</h3>
+   <label class="sl2">أعلى وأسفل<input type="range" id="gy" min="0" max="20" step="0.1" value="4.6"><output id="oy">4.6 mm</output></label>
+   <label class="sl2">الجوانب<input type="range" id="gx" min="0" max="30" step="0.1" value="5.6"><output id="ox">5.6 mm</output></label>
+  </div>
+  <div id="cards"></div>
+  <button id="add" class="gold"><i data-i="plus"></i>إضافة بطاقة</button>
+ </div>
+ <div id="phc" hidden>
+  <div class="box"><h3>الصورة الشخصية</h3>
+   <div class="fb"><i data-i="upload"></i><span>رفع الصورة</span><input type="file" accept="image/*" id="phf"></div>
+   <button id="phe" class="wide"><i data-i="crop"></i>تعديل الصورة الحالية</button>
+  </div>
+  <div class="box"><h3>القياس الرسمي</h3>
+   <select id="phs"></select>
+   <div class="r2"><label>العرض (cm)<input type="number" id="phw" step="0.1" min="1" max="20"></label><label>الارتفاع (cm)<input type="number" id="phh" step="0.1" min="1" max="28"></label></div>
+   <div class="r2"><label>عدد النسخ<input type="number" id="phn" min="1" max="200"></label><label>الورق<select id="php"><option value="210,297">A4</option><option value="101.6,152.4">10×15 سم</option><option value="127,177.8">13×18 سم</option></select></label></div>
+   <label class="sl2">التباعد<input type="range" id="phg" min="0" max="10" step="0.5" value="2"><output id="ophg">2 mm</output></label>
+   <label class="chk"><input type="checkbox" id="phk" checked> خطوط القص</label>
+  </div>
+ </div>
+</section>
+<section id="pv">
+ <div class="nav"><button id="nx">التالي</button><span id="pg"></span><button id="pr">السابق</button></div>
+ <div class="paper"><canvas id="cv"></canvas></div>
+ <div class="bar">
+  <button class="gold" id="eo"><i data-i="print"></i>طباعة مباشرة</button>
+  <button class="gold" id="ep"><i data-i="pdf"></i>تصدير PDF</button>
+  <button class="gold" id="ei"><i data-i="image"></i>تصدير صورة</button>
+  <select id="fmt"><option value="jpg">JPG</option><option value="png">PNG</option></select>
+  <select id="dpi"><option value="150">150 dpi</option><option value="300" selected>300 dpi</option><option value="600">600 dpi</option></select>
+  <span id="msg"></span>
+ </div>
+ <p class="note">معاينة بحجم الورق الحقيقي. الصور تُعالَج داخل جهازك فقط ولا تُرفع إلى أي خادم.</p>
+</section>
+</main>
+<dialog id="ed">
+ <div class="dh"><i data-i="crop"></i><b>تحرير الصورة — قص وتدوير وتحسين</b></div>
+ <div class="ew"><canvas id="ec"></canvas></div>
+ <p class="note">تُقترح الحدود تلقائياً — اسحب الزوايا الذهبية لتعديلها (تظهر عدسة مكبّرة أثناء السحب) ثم اضغط «تطبيق القص». الحدّة والسطوع والتباين تُطبَّق بعد القص.</p>
+ <div class="eg">
+  <button id="e5" class="gold"><i data-i="scan"></i><span>تعرّف ذكي على الهوية</span></button>
+  <button id="e1"><i data-i="crop"></i>تطبيق القص</button>
+  <button id="e2"><i data-i="spark"></i>تحسين الألوان</button>
+  <button id="e3"><i data-i="rot"></i>تدوير 90°</button>
+  <button id="e4"><i data-i="undo"></i>استعادة الأصل</button>
+ </div>
+ <div class="sls">
+  <label>تحسين الوضوح (الحدّة)<input type="range" id="sh" min="-100" max="100" value="0"><output id="osh">0</output></label>
+  <label>السطوع<input type="range" id="br" min="-50" max="50" value="0"><output id="obr">0</output></label>
+  <label>التباين<input type="range" id="ct" min="-50" max="50" value="0"><output id="oct">0</output></label>
+ </div>
+ <div class="ef"><button class="gold" id="ok"><i data-i="check"></i>اعتماد والمتابعة</button><button id="no">إلغاء</button></div>
+</dialog>
+<div id="pp"></div>
+<script src="app.js"></script>
+<script>if("serviceWorker" in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script>
+</body>
+</html>
